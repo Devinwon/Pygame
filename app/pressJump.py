@@ -35,6 +35,12 @@ while run:
 				neg=-1
 			y-=(jumpCount**2)*0.5*neg
 			jumpCount-=1
+		'''
+		if jumpCount>=-10:
+			y-=jumpCount*abs(jumpCount)
+			jumpCount-=1
+			
+		'''
 		else:
 			isJump=not isJump
 			jumpCount=10
