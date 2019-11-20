@@ -29,19 +29,6 @@ walkLeft = [pygame.image.load('images/L1.png'), \
 bg = pygame.image.load('images/bg.jpg')
 char = pygame.image.load('images/standing.png')
 
-class projectile(object):
-	def __init__(self,x,y,radius,color,facing):
-		self.x = x
-		self.y = y
-		self.radius = radius
-		self.color = color
-		self.facing = facing
-		self.vel = 8 * facing
-
-	def draw(self,win):
-		pygame.draw.circle(win, self.color, (self.x,self.y), self.radius)
-
-
 class player(object):
 	def __init__(self,x,y,width,height):
 		self.x=x
@@ -73,10 +60,25 @@ class player(object):
 			else:
 				win.blit(walkLeft[0],(self.x,self.y))
 
+class projectile(object):
+	def __init__(self,x,y,radius,color,facing):
+		self.x = x
+		self.y = y
+		self.radius = radius
+		self.color = color
+		self.facing = facing
+		self.vel = 8 * facing
+
+	def draw(self,win):
+		pygame.draw.circle(win, self.color, (self.x,self.y), self.radius)
+
 def redrawGameWindow():
 	# This will draw our background image at (0,0)
 	win.blit(bg,(0,0))
 	man.draw(win)
+	for bullet in bullets:
+		bullet.draw(win)
+		
 	pygame.display.update()
 
 run=True
